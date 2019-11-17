@@ -10,8 +10,8 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired(required = true)
-    private UserMapper userMapper;
+    @Autowired
+     UserMapper userMapper;
 
     @Override
     public List<UmsMember> selectAllUser() {

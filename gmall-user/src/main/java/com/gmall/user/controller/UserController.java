@@ -5,7 +5,9 @@ import com.gmall.user.bean.UmsMemberReceiveAddress;
 import com.gmall.user.service.UmsMemberReceiveAddressService;
 import com.gmall.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -16,13 +18,13 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    //    @Autowired
-//    UmsMemberReceiveAddressService umsMemberReceiveAddressService;
-//    @RequestMapping("getReceiveAddressByMemberId")
-//    public List<UmsMemberReceiveAddress> getReceiveAddressByMemberId(String memberId) {
-//        List<UmsMemberReceiveAddress> umsMemberReceiveAddresses = umsMemberReceiveAddressService.getReceiveAddressByMemberId(memberId);
-//        return umsMemberReceiveAddresses;
-//    }
+        @Autowired
+    UmsMemberReceiveAddressService umsMemberReceiveAddressService;
+    @RequestMapping(value ="getReceiveAddressByMemberId/{memberId}",method = RequestMethod.GET)
+    public List<UmsMemberReceiveAddress> getReceiveAddressByMemberId(@PathVariable String memberId) {
+        List<UmsMemberReceiveAddress> umsMemberReceiveAddresses = umsMemberReceiveAddressService.getReceiveAddressByMemberId(memberId);
+        return umsMemberReceiveAddresses;
+    }
     @RequestMapping("selectAllUser")
     public List<UmsMember> selectAllUser() {
         List<UmsMember> umsMembers = userService.selectAllUser();
